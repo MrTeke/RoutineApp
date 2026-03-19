@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lumi — Gizlilik Politikası / Privacy Policy</title>
+  <style>
+    :root {
+      --purple: #6C5CE7;
+      --light: #F8F7FF;
+      --text: #2d3436;
+      --muted: #636E72;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    header {
+      background: var(--purple);
+      color: #fff;
+      padding: 48px 24px 36px;
+      text-align: center;
+    }
+    header h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; }
+    header p  { font-size: 1rem; opacity: 0.85; }
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+    .lang-switch {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .lang-switch a {
+      padding: 6px 16px;
+      border-radius: 20px;
+      background: #fff;
+      border: 1.5px solid var(--purple);
+      color: var(--purple);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .lang-switch a:hover { background: var(--purple); color: #fff; }
+    section { margin-bottom: 36px; }
+    h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--purple);
+      margin-bottom: 10px;
+      border-left: 4px solid var(--purple);
+      padding-left: 12px;
+    }
+    p { color: var(--muted); margin-bottom: 8px; }
+    ul { padding-left: 20px; color: var(--muted); }
+    ul li { margin-bottom: 4px; }
+    .effective-date {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+    .divider {
+      border: none;
+      border-top: 2px dashed #dfe6e9;
+      margin: 48px 0;
+    }
+    a { color: var(--purple); }
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Lumi</h1>
+  <p>Gizlilik Politikası &amp; Privacy Policy</p>
+</header>
+
+<main>
+  <div class="lang-switch">
+    <a href="#turkish">Türkçe</a>
+    <a href="#english">English</a>
+  </div>
+
+  <!-- ===================== TURKISH ===================== -->
+  <div id="turkish">
+    <p class="effective-date">Son güncelleme / Last updated: 19 Mart 2025</p>
+
+    <section>
+      <h2>1. Genel Bakış</h2>
+      <p>
+        Lumi uygulaması ("Uygulama"), günlük alışkanlık takibi için tasarlanmıştır.
+        Bu gizlilik politikası, uygulama kapsamında hangi verilerin toplandığını, nasıl
+        kullanıldığını ve nasıl korunduğunu açıklar.
+      </p>
+    </section>
+
+    <section>
+      <h2>2. Toplanan Veriler</h2>
+      <ul>
+        <li><strong>Hesap bilgileri:</strong> E-posta adresi (kayıt ve giriş için)</li>
+        <li><strong>Alışkanlık verileri:</strong> Oluşturduğunuz alışkanlıklar, tamamlama kayıtları, seri (streak) bilgisi</li>
+        <li><strong>Bildirim tercihleri:</strong> Push bildirim için Expo push token</li>
+        <li><strong>Dil tercihi:</strong> Uygulama içi dil ayarı</li>
+      </ul>
+      <p style="margin-top:10px;">
+        Konum, kamera, mikrofon veya kişiler gibi hassas cihaz verilerine <strong>erişim sağlamıyoruz</strong>.
+      </p>
+    </section>
+
+    <section>
+      <h2>3. Verilerin Kullanımı</h2>
+      <ul>
+        <li>Hesabınızı doğrulamak ve güvenliğini sağlamak</li>
+        <li>Alışkanlık takibinizi kaydetmek ve göstermek</li>
+        <li>Belirlediğiniz saatlerde hatırlatma bildirimleri göndermek</li>
+        <li>Uygulama içi deneyimi kişiselleştirmek</li>
+      </ul>
+      <p style="margin-top:10px;">
+        Verileriniz <strong>üçüncü taraflarla satılmaz veya reklam amaçlı paylaşılmaz</strong>.
+      </p>
+    </section>
+
+    <section>
+      <h2>4. Verilerin Saklanması</h2>
+      <p>
+        Tüm veriler <strong>Supabase</strong> altyapısında saklanmaktadır (AWS Avrupa bölgesi sunucuları).
+        Supabase'in kendi gizlilik politikası için:
+        <a href="https://supabase.com/privacy" target="_blank" rel="noopener">supabase.com/privacy</a>
+      </p>
+      <p>
+        Push bildirimler <strong>Expo</strong> bildirimleri altyapısı üzerinden iletilmektedir.
+        Expo'nun gizlilik politikası için:
+        <a href="https://expo.dev/privacy" target="_blank" rel="noopener">expo.dev/privacy</a>
+      </p>
+    </section>
+
+    <section>
+      <h2>5. Veri Saklama Süresi</h2>
+      <p>
+        Hesabınız aktif olduğu sürece verileriniz saklanır. Hesabınızı silmek istediğinizde
+        tüm verileriniz kalıcı olarak silinir.
+      </p>
+    </section>
+
+    <section>
+      <h2>6. Haklarınız</h2>
+      <ul>
+        <li>Verilerinize erişim talep etme</li>
+        <li>Verilerinizin düzeltilmesini isteme</li>
+        <li>Hesabınızı ve tüm verilerinizi silme</li>
+        <li>Bildirim iznini istediğiniz zaman cihaz ayarlarından iptal etme</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. Silme Talebi</h2>
+      <p>
+        Hesabınızın ve tüm verilerinizin silinmesini talep etmek için aşağıdaki
+        e-posta adresine yazabilirsiniz:
+        <a href="mailto:akinteke1996@gmail.com">akinteke1996@gmail.com</a>
+      </p>
+      <p>Talepler en geç 30 gün içinde işleme alınır.</p>
+    </section>
+
+    <section>
+      <h2>8. İletişim</h2>
+      <p>
+        Gizlilik politikasına ilişkin sorularınız için:<br />
+        <a href="mailto:akinteke1996@gmail.com">akinteke1996@gmail.com</a>
+      </p>
+    </section>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ===================== ENGLISH ===================== -->
+  <div id="english">
+    <p class="effective-date">Last updated: March 19, 2025</p>
+
+    <section>
+      <h2>1. Overview</h2>
+      <p>
+        Lumi ("the App") is designed for daily habit tracking. This privacy policy explains
+        what data is collected within the App, how it is used, and how it is protected.
+      </p>
+    </section>
+
+    <section>
+      <h2>2. Data We Collect</h2>
+      <ul>
+        <li><strong>Account information:</strong> Email address (for registration and login)</li>
+        <li><strong>Habit data:</strong> Habits you create, completion records, streak information</li>
+        <li><strong>Notification preferences:</strong> Expo push token for push notifications</li>
+        <li><strong>Language preference:</strong> In-app language setting</li>
+      </ul>
+      <p style="margin-top:10px;">
+        We do <strong>not</strong> access sensitive device data such as location, camera,
+        microphone, or contacts.
+      </p>
+    </section>
+
+    <section>
+      <h2>3. How We Use Your Data</h2>
+      <ul>
+        <li>To authenticate and secure your account</li>
+        <li>To store and display your habit tracking progress</li>
+        <li>To send reminder notifications at your chosen times</li>
+        <li>To personalize the in-app experience</li>
+      </ul>
+      <p style="margin-top:10px;">
+        Your data is <strong>never sold or shared with third parties for advertising</strong>.
+      </p>
+    </section>
+
+    <section>
+      <h2>4. Data Storage</h2>
+      <p>
+        All data is stored on <strong>Supabase</strong> infrastructure (AWS Europe region servers).
+        For Supabase's own privacy policy, visit:
+        <a href="https://supabase.com/privacy" target="_blank" rel="noopener">supabase.com/privacy</a>
+      </p>
+      <p>
+        Push notifications are delivered via <strong>Expo</strong>'s notification infrastructure.
+        For Expo's privacy policy, visit:
+        <a href="https://expo.dev/privacy" target="_blank" rel="noopener">expo.dev/privacy</a>
+      </p>
+    </section>
+
+    <section>
+      <h2>5. Data Retention</h2>
+      <p>
+        Your data is retained for as long as your account is active. When you delete your
+        account, all your data is permanently removed.
+      </p>
+    </section>
+
+    <section>
+      <h2>6. Your Rights</h2>
+      <ul>
+        <li>Request access to your data</li>
+        <li>Request correction of your data</li>
+        <li>Delete your account and all associated data</li>
+        <li>Revoke notification permission at any time via device settings</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. Deletion Requests</h2>
+      <p>
+        To request deletion of your account and all associated data, contact us at:
+        <a href="mailto:akinteke1996@gmail.com">akinteke1996@gmail.com</a>
+      </p>
+      <p>Requests are processed within 30 days.</p>
+    </section>
+
+    <section>
+      <h2>8. Contact</h2>
+      <p>
+        For any questions regarding this privacy policy:<br />
+        <a href="mailto:akinteke1996@gmail.com">akinteke1996@gmail.com</a>
+      </p>
+    </section>
+  </div>
+</main>
+
+<footer>
+  &copy; 2025 Lumi. All rights reserved.
+</footer>
+
+</body>
+</html>
