@@ -20,7 +20,7 @@ export default function ForgotPasswordScreen() {
     }
     setLoading(true);
     const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), {
-      redirectTo: 'lumi://reset-password',
+      redirectTo: 'https://mrteke.github.io/RoutineApp/reset-redirect.html',
     });
     setLoading(false);
     if (error) {
