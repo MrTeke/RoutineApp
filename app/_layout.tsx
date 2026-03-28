@@ -97,6 +97,7 @@ export default function RootLayout() {
       async (event, session) => {
         const inAuthGroup = segments[0] === '(auth)';
         const inOnboarding = segments[0] === 'onboarding';
+        const inResetPassword = segments[0] === 'reset-password';
 
         if (event === 'PASSWORD_RECOVERY') {
           router.replace('/(auth)/update-password');
@@ -113,7 +114,7 @@ export default function RootLayout() {
 
           if (inAuthGroup || inOnboarding) router.replace('/(tabs)');
         } else {
-          if (!inAuthGroup && !inOnboarding) router.replace('/(auth)/login');
+          if (!inAuthGroup && !inOnboarding && !inResetPassword) router.replace('/(auth)/login');
         }
       }
     );
