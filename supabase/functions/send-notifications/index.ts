@@ -49,7 +49,7 @@ Deno.serve(async (_req) => {
     const userIds = [...new Set((pendingNotifs as NotificationRow[]).map((n) => n.user_id))];
 
     const [{ data: habits }, { data: profiles }] = await Promise.all([
-      supabase.from('habits').select('id, name, icon').in('id', habitIds),
+      supabase.from('habits').select('id, name, icon').in('id', habitIds).eq('is_active', true),
       supabase.from('profiles').select('id, expo_push_token').in('id', userIds),
     ]);
 

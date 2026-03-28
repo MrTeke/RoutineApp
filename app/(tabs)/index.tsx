@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import { View, Text, ScrollView, StyleSheet, TouchableOpacity, RefreshControl, Alert } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, TouchableOpacity, RefreshControl, Alert, ActivityIndicator } from 'react-native';
 import Animated, { FadeInDown } from 'react-native-reanimated';
 import { Link, useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
@@ -94,7 +94,11 @@ export default function DashboardScreen() {
           </Link>
         </Animated.View>
 
-        {habits.length === 0 ? (
+        {loading ? (
+          <View style={styles.loadingContainer}>
+            <ActivityIndicator size="large" color="#6C5CE7" />
+          </View>
+        ) : habits.length === 0 ? (
           <Animated.View entering={FadeInDown.delay(220).springify()} style={styles.empty}>
             <Text style={styles.emptyIcon}>🌱</Text>
             <Text style={styles.emptyTitle}>{t('dashboard.empty.title')}</Text>
@@ -135,6 +139,7 @@ const styles = StyleSheet.create({
   sectionTitle: { fontSize: 18, fontWeight: '700', color: '#2D3436' },
   addButton: { backgroundColor: '#6C5CE7', borderRadius: 8, paddingHorizontal: 12, paddingVertical: 6 },
   addButtonText: { color: '#fff', fontSize: 13, fontWeight: '600' },
+  loadingContainer: { paddingVertical: 48, alignItems: 'center' },
   empty: { alignItems: 'center', paddingVertical: 48 },
   emptyIcon: { fontSize: 48, marginBottom: 12 },
   emptyTitle: { fontSize: 18, fontWeight: '700', color: '#2D3436', marginBottom: 8 },

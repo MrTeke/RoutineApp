@@ -10,7 +10,7 @@ export type ScheduleSlot = {
  * Generate notification schedule slots for the next `days` days
  * based on the habit's notification_type.
  */
-export function generateSchedule(habit: Habit, days = 7): ScheduleSlot[] {
+export function generateSchedule(habit: Habit, days = 30): ScheduleSlot[] {
   const slots: ScheduleSlot[] = [];
   const now = new Date();
 
@@ -95,7 +95,7 @@ export async function refreshScheduleIfNeeded(habits: Habit[]): Promise<void> {
   const habitsNeedingRefresh = habits.filter((h) => !coveredHabitIds.has(h.id));
   if (habitsNeedingRefresh.length === 0) return;
 
-  const newSlots = habitsNeedingRefresh.flatMap((h) => generateSchedule(h, 7));
+  const newSlots = habitsNeedingRefresh.flatMap((h) => generateSchedule(h, 30));
   if (newSlots.length === 0) return;
 
   await supabase.from('notification_schedule').insert(newSlots);

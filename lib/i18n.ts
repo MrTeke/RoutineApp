@@ -33,7 +33,7 @@ i18n.use(initReactI18next).init({
 // AsyncStorage'dan kaydedilen dili okuyup uygular.
 export async function initI18n(): Promise<void> {
   const savedLang = await AsyncStorage.getItem(LANGUAGE_KEY);
-  const deviceLang = Localization.getLocales()[0]?.languageCode ?? 'tr';
+  const deviceLang = Localization.getLocales()[0]?.languageCode ?? 'en';
   const supported = SUPPORTED_LANGUAGES.map((l) => l.code);
   const lng = savedLang ?? (supported.includes(deviceLang) ? deviceLang : 'en');
   await i18n.changeLanguage(lng);

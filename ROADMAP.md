@@ -119,30 +119,30 @@
 - [x] Edge Function manuel testi — `{"sent":0}` döndü (başarılı)
 - [x] EAS CLI kurulumu (`eas-cli/18.3.0`)
 - [x] `eas login` — hesap: tekeshi / akinteke1996@gmail.com
-- [x] `eas build:configure` — EAS project oluşturuldu (@tekeshi/habitflow)
-- [x] `app.json`'a EAS `projectId` eklendi (`dc042df3-c90f-4cd4-9caf-82cd469fb979`)
+- [x] `eas build:configure` — EAS project yeniden oluşturuldu (@tekeshi/lumi, `42387dea-8e66-4dc9-83f7-dc064349938c`)
+- [x] `app.json` güncellendi: slug/scheme/bundleIdentifier → "lumi", yeni projectId
 - [x] `eas.json` oluşturuldu (development / preview / production profilleri)
+- [x] GitHub repo oluşturuldu: https://github.com/MrTeke/RoutineApp (public)
+- [x] Privacy Policy yayınlandı: https://mrteke.github.io/RoutineApp/privacy-policy.html
+- [x] Apple Developer Program — ödeme yapıldı (sipariş: W1636192771), onay bekleniyor
 
 ### Yapılacaklar
 
-#### App Icon & Splash
-- [ ] App icon (1024×1024, PNG, şeffaflık yok) + splash screen
-
-#### EAS Yeniden Yapılandırma (slug değişti: habitflow → lumi)
-- [ ] `eas build:configure` tekrar çalıştır → yeni EAS project (@tekeshi/lumi)
-- [ ] `app.json`'daki `projectId`'yi yeni değerle güncelle
-
-#### TestFlight
-- [ ] `eas build --platform ios --profile preview` → TestFlight'a yükle
-- [ ] Push notification E2E testi (Expo Go bağımsız, gerçek cihaz)
-- [ ] Şifre sıfırlama deep link testi (`lumi://reset-password`)
+#### Apple Developer Hesabı Aktif Olunca
+- [x] Supabase Dashboard → Redirect URLs → `lumi://reset-password` ekle
+- [x] `eas build --platform ios --profile preview` → Apple hesabıyla giriş yap, signing otomatik oluşsun (bundle: com.tekeshi.lumi)
+- [x] Push notification E2E testi ✅ (27 Mar 2026)
+- [x] Deep link race condition bug fix — `app/_layout.tsx` `pendingUrl` state ile düzeltildi
+- [ ] Şifre sıfırlama deep link testi (`lumi://reset-password`) — preview build kuyruğu bekliyor, Mac ile test edilecek (28 Mar 2026)
 
 #### App Store Submission Hazırlığı
-- [ ] Apple Developer hesabı aktif mi kontrol et ($99/yıl)
-- [ ] Privacy Policy sayfası yayınla (Apple zorunlu tutuyor)
-- [ ] App Store Connect'te uygulama kaydı oluştur
-- [ ] Ekran görüntüleri hazırla (en az iPhone 6.5" — 1290×2796)
-- [ ] App açıklaması, keywords, kategori seç (Health & Fitness önerilir)
+- [x] App Store Connect'te uygulama kaydı oluşturuldu — "Lumi: Daily Routine" (bundle: com.tekeshi.lumi, SKU: com.tekeshi.lumi)
+- [x] App Information: subtitle "Build better habits daily", kategori Health & Fitness / Productivity
+- [x] Age Rating: 9+
+- [x] Pricing: Free
+- [x] App Privacy: Email Address + User ID (App Functionality, Linked to identity) — Published
+- [x] Default dil İngilizce yapıldı (`lib/i18n.ts` fallback `'tr'` → `'en'`)
+- [ ] Ekran görüntüleri hazırla (iPhone 6.7" — 1290×2796, min. 3 adet) — Mac + Xcode Simulator ile yapılacak
 - [ ] `eas build --platform ios --profile production`
 - [ ] `eas submit --platform ios`
 
@@ -169,9 +169,10 @@
 - [x] İkon seçiminde seçili renk vurgusu
 
 ### D — TestFlight Build
-- [ ] App icon (1024×1024) + splash screen finalize
-- [ ] `eas build --platform ios --profile preview` → TestFlight
-- [ ] Native push notification testi (Expo Go bağımsız)
+- [x] App icon (Lumi logosu) + splash screen — assets yerleştirildi
+- [x] `eas build --platform ios --profile preview` → Ad Hoc build kuruldu, cihaza yüklendi
+- [x] Dashboard yükleme spinner'ı eklendi (ActivityIndicator)
+- [ ] Native push notification E2E testi — 26 Mar 2026 14:30'da doğrulanacak
 
 ### E — Profil Ekranı  ✅ Tamamlandı
 - [x] `app/(tabs)/profile.tsx` — Avatar (initials), isim inline düzenleme, email, üyelik tarihi
@@ -190,26 +191,8 @@
 
 ## ⏭️ Sıradaki Adım
 
-**App Store Publish — Sıradaki Seans**
-
-Sırasıyla yapılacaklar:
-
-1. **EAS yeniden yapılandır** (slug habitflow → lumi değişti)
-   - `eas build:configure` → yeni EAS project `@tekeshi/lumi`
-   - `app.json` `projectId`'yi yeni değerle güncelle
-   - Supabase Dashboard'da redirect URL'i `habitflow://reset-password` → `lumi://reset-password` olarak güncelle
-   - `app.json` scheme'i `"lumi"` olarak kontrol et (zaten lumi, ama EAS kayıt yenilenmeli)
-
-2. **`eas build --platform ios --profile preview`** → TestFlight'a yükle
-
-3. **Native test** (gerçek cihaz, Expo Go bağımsız)
-   - Push notification E2E
-   - Şifre sıfırlama deep link (`lumi://reset-password`)
-
-4. **Privacy Policy** yayınla (Apple zorunlu — basit web sayfası yeterli)
-
-5. **App Store Connect** — uygulama kaydı oluştur
-
-6. **Ekran görüntüleri** hazırla (iPhone 6.5" — 1290×2796, min. 3 adet)
-
-7. **`eas build --platform ios --profile production`** + **`eas submit --platform ios`**
+1. [ ] Preview build kuyruğu tamamlansın → cihaza kur → deep link testi (şifre sıfırlama)
+2. [ ] Mac + Xcode Simulator → iPhone 15 Pro Max ekran görüntüleri (min. 3 adet, 1290×2796)
+3. [ ] App Store Connect'e screenshot yükle + description/keywords ekle
+4. [ ] `eas build --platform ios --profile production`
+5. [ ] `eas submit --platform ios`

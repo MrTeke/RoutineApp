@@ -104,7 +104,8 @@ export const useHabitStore = create<HabitStore>((set, get) => ({
       updates.notification_interval_minutes ||
       updates.notification_times ||
       updates.smart_window_start ||
-      updates.smart_window_end
+      updates.smart_window_end ||
+      updates.target_per_day !== undefined
     ) {
       const habit = get().habits.find((h) => h.id === id);
       if (habit) {
@@ -132,6 +133,14 @@ export const useHabitStore = create<HabitStore>((set, get) => ({
       set({ error: 'Alışkanlık silinemedi. Tekrar dene.' });
       return;
     }
+
+    // Gönderilmemiş bildirimleri temizle
+    await supabase
+      .from('notification_schedule')
+      .delete()
+      .eq('habit_id', id)
+      .eq('sent', false);
+
     set((state) => ({ habits: state.habits.filter((h) => h.id !== id) }));
   },
 

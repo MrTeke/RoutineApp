@@ -32,6 +32,7 @@ export default function RootLayout() {
   const logHabit = useHabitStore((s) => s.logHabit);
   const [ready, setReady] = useState(false);
   const [onboardingDone, setOnboardingDone] = useState<boolean | null>(null);
+  const [pendingUrl, setPendingUrl] = useState<string | null>(null);
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -61,28 +62,33 @@ export default function RootLayout() {
     }
   }, [ready, onboardingDone]);
 
-  // Handle deep links for password recovery
+  // Collect deep link URLs — processing is deferred until ready
   useEffect(() => {
-    const handleUrl = async (url: string) => {
-      const params = parseHashParams(url);
-      if (params.type === 'recovery' && params.access_token) {
-        await supabase.auth.setSession({
-          access_token: params.access_token,
-          refresh_token: params.refresh_token ?? '',
-        });
-        // onAuthStateChange will fire PASSWORD_RECOVERY and navigate
-      }
-    };
-
     // App opened from cold start via deep link
     Linking.getInitialURL().then((url) => {
-      if (url) handleUrl(url);
+      if (url) setPendingUrl(url);
     });
 
     // App already open, receives deep link
-    const sub = Linking.addEventListener('url', ({ url }) => handleUrl(url));
+    const sub = Linking.addEventListener('url', ({ url }) => setPendingUrl(url));
     return () => sub.remove();
   }, []);
+
+  // Process pending deep link once the auth listener is guaranteed to be subscribed
+  useEffect(() => {
+    if (!ready || !pendingUrl) return;
+
+    const params = parseHashParams(pendingUrl);
+    if (params.type === 'recovery' && params.access_token) {
+      supabase.auth.setSession({
+        access_token: params.access_token,
+        refresh_token: params.refresh_token ?? '',
+      });
+      // onAuthStateChange will fire PASSWORD_RECOVERY and navigate
+    }
+
+    setPendingUrl(null);
+  }, [ready, pendingUrl]);
 
   useEffect(() => {
     if (!ready) return;
