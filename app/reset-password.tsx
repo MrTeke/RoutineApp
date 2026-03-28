@@ -1,9 +1,12 @@
 import { useEffect } from 'react';
 import { ActivityIndicator, View, StyleSheet } from 'react-native';
+import { useRouter } from 'expo-router';
 import * as Linking from 'expo-linking';
 import { supabase } from '../lib/supabase';
 
 export default function ResetPasswordRedirect() {
+  const router = useRouter();
+
   useEffect(() => {
     async function handle() {
       const url = await Linking.getInitialURL();
@@ -23,7 +26,7 @@ export default function ResetPasswordRedirect() {
             access_token: params.access_token,
             refresh_token: params.refresh_token ?? '',
           });
-          // onAuthStateChange in _layout.tsx fires PASSWORD_RECOVERY → navigates to update-password
+          router.replace('/(auth)/update-password');
           return;
         }
       }
@@ -39,7 +42,7 @@ export default function ResetPasswordRedirect() {
         );
         if (params.code) {
           await supabase.auth.exchangeCodeForSession(params.code);
-          // onAuthStateChange in _layout.tsx fires PASSWORD_RECOVERY → navigates to update-password
+          router.replace('/(auth)/update-password');
         }
       }
     }
