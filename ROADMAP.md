@@ -142,9 +142,16 @@
 - [x] Pricing: Free
 - [x] App Privacy: Email Address + User ID (App Functionality, Linked to identity) — Published
 - [x] Default dil İngilizce yapıldı (`lib/i18n.ts` fallback `'tr'` → `'en'`)
-- [ ] Ekran görüntüleri hazırla (iPhone 6.7" — 1290×2796, min. 3 adet) — Mac + Xcode Simulator ile yapılacak
+- [x] Ekran görüntüleri hazırla (iPhone 15 Pro Max — 1290×2796, 9 adet) — Mac + Xcode Simulator ile alındı
+- [x] App Store Connect'e screenshot yüklendi (6.9" Display bölümü)
+- [x] Description, Keywords, Support URL, Copyright dolduruldu
+- [x] App Review Information (test hesabı + contact info) dolduruldu
+- [x] Regulated Medical Device Declaration → No
+- [x] `docs/index.html` destek sayfası oluşturuldu → https://mrteke.github.io/RoutineApp/
+- [ ] Şifre sıfırlama deep link testi — Nisan 1'de EAS build hakkı sıfırlanınca
 - [ ] `eas build --platform ios --profile production`
-- [ ] `eas submit --platform ios`
+- [ ] Build'i App Store Connect'e yükle (build seç)
+- [ ] `eas submit --platform ios` veya App Store Connect'ten "Add for Review"
 
 ---
 
@@ -191,8 +198,7 @@
 
 ## ⏭️ Sıradaki Adım
 
-1. [ ] Preview build kuyruğu tamamlansın → cihaza kur → deep link testi (şifre sıfırlama)
-2. [ ] Mac + Xcode Simulator → iPhone 15 Pro Max ekran görüntüleri (min. 3 adet, 1290×2796)
-3. [ ] App Store Connect'e screenshot yükle + description/keywords ekle
-4. [ ] `eas build --platform ios --profile production`
-5. [ ] `eas submit --platform ios`
+1. [ ] Nisan 1'de EAS build hakkı sıfırlanınca: şifre sıfırlama deep link testi (production build ile)
+2. [ ] `eas build --platform ios --profile production`
+3. [ ] Build tamamlanınca App Store Connect → iOS App 1.0 → Build seç
+4. [ ] "Add for Review" → Submit
