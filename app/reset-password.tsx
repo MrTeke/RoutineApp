@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { ActivityIndicator, View, StyleSheet } from 'react-native';
+import { ActivityIndicator, View, StyleSheet, Alert } from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 import { supabase } from '../lib/supabase';
 
@@ -13,7 +13,11 @@ export default function ResetPasswordRedirect() {
 
   useEffect(() => {
     if (error) {
-      router.replace('/(auth)/forgot-password');
+      Alert.alert(
+        'Link Expired',
+        'The password reset link has expired. Please request a new one.',
+        [{ text: 'OK', onPress: () => router.replace('/(auth)/forgot-password') }]
+      );
       return;
     }
 
