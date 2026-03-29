@@ -1,33 +1,39 @@
-import { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { useLocalSearchParams, useGlobalSearchParams } from 'expo-router';
-import * as Linking from 'expo-linking';
+import { useEffect } from 'react';
+import { ActivityIndicator, View, StyleSheet, Alert } from 'react-native';
+import { useRouter, useLocalSearchParams } from 'expo-router';
+import { supabase } from '../lib/supabase';
 
 export default function ResetPasswordRedirect() {
-  const local = useLocalSearchParams();
-  const global = useGlobalSearchParams();
-  const [initialURL, setInitialURL] = useState<string>('loading...');
+  const router = useRouter();
+  const { access_token, refresh_token } = useLocalSearchParams<{
+    access_token?: string;
+    refresh_token?: string;
+  }>();
 
   useEffect(() => {
-    Linking.getInitialURL().then((u) => setInitialURL(u ?? 'NULL'));
-  }, []);
+    if (!access_token) return;
+
+    supabase.auth.setSession({
+      access_token,
+      refresh_token: refresh_token ?? '',
+    }).then(({ error }) => {
+      if (error) {
+        Alert.alert('Link Expired', 'Please request a new password reset link.', [
+          { text: 'OK', onPress: () => router.replace('/(auth)/forgot-password') },
+        ]);
+      } else {
+        router.replace('/(auth)/update-password');
+      }
+    });
+  }, [access_token]);
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.label}>getInitialURL:</Text>
-      <Text style={styles.value}>{initialURL}</Text>
-
-      <Text style={styles.label}>useLocalSearchParams:</Text>
-      <Text style={styles.value}>{JSON.stringify(local)}</Text>
-
-      <Text style={styles.label}>useGlobalSearchParams:</Text>
-      <Text style={styles.value}>{JSON.stringify(global)}</Text>
-    </ScrollView>
+    <View style={styles.container}>
+      <ActivityIndicator size="large" color="#6C5CE7" />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { padding: 20, backgroundColor: '#000', flexGrow: 1 },
-  label: { color: '#6C5CE7', fontWeight: 'bold', marginTop: 20, fontSize: 14 },
-  value: { color: '#fff', fontSize: 12, marginTop: 4, fontFamily: 'monospace' },
+  container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#000' },
 });

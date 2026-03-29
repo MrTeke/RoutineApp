@@ -85,20 +85,9 @@ export default function RootLayout() {
     return () => sub.remove();
   }, []);
 
-  // Process pending deep link once ready
+  // pendingUrl is collected but processed by the reset-password screen via useLocalSearchParams
   useEffect(() => {
     if (!ready || !pendingUrl) return;
-
-    const params = parseDeepLinkParams(pendingUrl);
-    if (params.access_token) {
-      supabase.auth.setSession({
-        access_token: params.access_token,
-        refresh_token: params.refresh_token ?? '',
-      }).then(() => {
-        router.replace('/(auth)/update-password');
-      });
-    }
-
     setPendingUrl(null);
   }, [ready, pendingUrl]);
 
