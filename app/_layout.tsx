@@ -14,16 +14,27 @@ import {
 import { refreshScheduleIfNeeded } from '../lib/scheduler';
 import { useHabitStore } from '../lib/store';
 
-/** Parse URL fragment (#key=val&key2=val2) into a plain object. */
-function parseHashParams(url: string): Record<string, string> {
-  const hash = url.split('#')[1];
-  if (!hash) return {};
+/** Parse key=value pairs from a string segment (handles values containing '='). */
+function parseSegment(segment: string): Record<string, string> {
+  if (!segment) return {};
   return Object.fromEntries(
-    hash.split('&').map((pair) => {
-      const [k, v] = pair.split('=');
-      return [k, decodeURIComponent(v ?? '')];
+    segment.split('&').map((pair) => {
+      const idx = pair.indexOf('=');
+      if (idx < 0) return [pair, ''];
+      return [pair.slice(0, idx), decodeURIComponent(pair.slice(idx + 1))];
     })
   );
+}
+
+/** Parse URL — checks query params first, then hash fragment. */
+function parseDeepLinkParams(url: string): Record<string, string> {
+  const query = url.split('?')[1]?.split('#')[0];
+  if (query) {
+    const params = parseSegment(query);
+    if (params.access_token) return params;
+  }
+  const hash = url.split('#')[1];
+  return parseSegment(hash ?? '');
 }
 
 export default function RootLayout() {
@@ -74,17 +85,18 @@ export default function RootLayout() {
     return () => sub.remove();
   }, []);
 
-  // Process pending deep link once the auth listener is guaranteed to be subscribed
+  // Process pending deep link once ready
   useEffect(() => {
     if (!ready || !pendingUrl) return;
 
-    const params = parseHashParams(pendingUrl);
-    if (params.type === 'recovery' && params.access_token) {
+    const params = parseDeepLinkParams(pendingUrl);
+    if (params.access_token) {
       supabase.auth.setSession({
         access_token: params.access_token,
         refresh_token: params.refresh_token ?? '',
+      }).then(() => {
+        router.replace('/(auth)/update-password');
       });
-      // onAuthStateChange will fire PASSWORD_RECOVERY and navigate
     }
 
     setPendingUrl(null);
