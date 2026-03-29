@@ -98,6 +98,7 @@ export default function RootLayout() {
         const inAuthGroup = segments[0] === '(auth)';
         const inOnboarding = segments[0] === 'onboarding';
         const inResetPassword = segments[0] === 'reset-password';
+        const inUpdatePassword = segments[1] === 'update-password';
 
         if (event === 'PASSWORD_RECOVERY') {
           router.replace('/(auth)/update-password');
@@ -112,7 +113,7 @@ export default function RootLayout() {
           if (habits.length === 0) await useHabitStore.getState().fetchHabits();
           refreshScheduleIfNeeded(useHabitStore.getState().habits);
 
-          if (inAuthGroup || inOnboarding) router.replace('/(tabs)');
+          if ((inAuthGroup && !inUpdatePassword) || inOnboarding) router.replace('/(tabs)');
         } else {
           if (!inAuthGroup && !inOnboarding && !inResetPassword) router.replace('/(auth)/login');
         }

@@ -13,20 +13,21 @@
   <p>Opening Lumi...</p>
   <script>
     var hash = window.location.hash.substring(1);
-    var params = {};
-    hash.split('&').forEach(function(pair) {
-      var parts = pair.split('=');
-      if (parts[0]) params[parts[0]] = decodeURIComponent(parts[1] || '');
-    });
+    var params = new URLSearchParams(hash);
+    var accessToken = params.get('access_token');
+    var refreshToken = params.get('refresh_token') || '';
+    var type = params.get('type') || '';
+    var error = params.get('error') || '';
 
-    var query = '';
-    if (params.access_token) {
-      query = '?access_token=' + encodeURIComponent(params.access_token)
-            + '&refresh_token=' + encodeURIComponent(params.refresh_token || '')
-            + '&type=' + encodeURIComponent(params.type || '');
-    } else if (params.error) {
-      query = '?error=' + encodeURIComponent(params.error)
-            + '&error_description=' + encodeURIComponent(params.error_description || '');
+    var query;
+    if (accessToken) {
+      query = '?access_token=' + encodeURIComponent(accessToken)
+            + '&refresh_token=' + encodeURIComponent(refreshToken)
+            + '&type=' + encodeURIComponent(type);
+    } else if (error) {
+      query = '?error=' + encodeURIComponent(error);
+    } else {
+      query = '';
     }
 
     window.location.replace('lumi://reset-password' + query);
