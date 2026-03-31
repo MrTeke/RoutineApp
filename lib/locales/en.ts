@@ -15,7 +15,7 @@ export default {
     },
     forgotPassword: {
       title: 'Reset Password',
-      subtitle: "Enter your email and we'll send you a reset link.",
+      subtitle: "Enter your email and we'll send you a 6-digit code.",
       emailPlaceholder: 'Email',
       button: 'Send Reset Link', loading: 'Sending…',
       backToLogin: 'Back to Sign In',
@@ -35,6 +35,16 @@ export default {
       errorMinLength: 'Password must be at least 6 characters.',
       errorMatch: 'Passwords do not match.',
       errorGeneric: 'Could not update password. Please try again.',
+    },
+    verifyResetOtp: {
+      title: 'Enter Code',
+      subtitle: 'Enter the 6-digit code sent to your email.',
+      codePlaceholder: '000000',
+      button: 'Verify', loading: 'Verifying…',
+      back: 'Go back',
+      errorTitle: 'Error',
+      errorLength: 'Please enter the complete 6-digit code.',
+      errorInvalid: 'Invalid or expired code. Please request a new one.',
     },
     register: {
       subtitle: 'Create an account',

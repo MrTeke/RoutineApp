@@ -15,7 +15,7 @@ export default {
     },
     forgotPassword: {
       title: 'Restablecer contraseña',
-      subtitle: 'Ingresa tu correo y te enviaremos un enlace de restablecimiento.',
+      subtitle: 'Ingresa tu correo y te enviaremos un código de 6 dígitos.',
       emailPlaceholder: 'Correo electrónico',
       button: 'Enviar enlace', loading: 'Enviando…',
       backToLogin: 'Volver al inicio de sesión',
@@ -35,6 +35,16 @@ export default {
       errorMinLength: 'La contraseña debe tener al menos 6 caracteres.',
       errorMatch: 'Las contraseñas no coinciden.',
       errorGeneric: 'No se pudo actualizar la contraseña. Inténtalo de nuevo.',
+    },
+    verifyResetOtp: {
+      title: 'Ingresar código',
+      subtitle: 'Ingresa el código de 6 dígitos enviado a tu correo.',
+      codePlaceholder: '000000',
+      button: 'Verificar', loading: 'Verificando…',
+      back: 'Volver',
+      errorTitle: 'Error',
+      errorLength: 'Ingresa el código completo de 6 dígitos.',
+      errorInvalid: 'Código inválido o expirado. Solicita uno nuevo.',
     },
     register: {
       subtitle: 'Crear una cuenta',

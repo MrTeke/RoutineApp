@@ -26,11 +26,7 @@ export default function ForgotPasswordScreen() {
     if (error) {
       Alert.alert(t('auth.forgotPassword.errorTitle'), t('auth.login.errorGeneric'));
     } else {
-      Alert.alert(
-        t('auth.forgotPassword.successTitle'),
-        t('auth.forgotPassword.successMessage'),
-        [{ text: t('common.ok'), onPress: () => router.back() }]
-      );
+      router.replace({ pathname: '/(auth)/verify-reset-otp', params: { email: email.trim() } });
     }
   };
 
