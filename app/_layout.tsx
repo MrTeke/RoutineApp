@@ -52,7 +52,7 @@ export default function RootLayout() {
     if (!ready) return;
 
     const { data: authListener } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
+      (event, session) => {
         const inAuthGroup = segments[0] === '(auth)';
         const inOnboarding = segments[0] === 'onboarding';
         const inUpdatePassword = segments[1] === 'update-password';
@@ -64,12 +64,15 @@ export default function RootLayout() {
         }
 
         if (session) {
-          const token = await registerForPushNotifications();
-          if (token) await savePushToken(session.user.id, token);
-
-          const { habits } = useHabitStore.getState();
-          if (habits.length === 0) await useHabitStore.getState().fetchHabits();
-          refreshScheduleIfNeeded(useHabitStore.getState().habits);
+          // Defer async ops to avoid blocking Supabase auth lock
+          // (calling supabase.auth.* inside an async onAuthStateChange callback causes deadlock)
+          setTimeout(async () => {
+            const token = await registerForPushNotifications();
+            if (token) await savePushToken(session.user.id, token);
+            const { habits } = useHabitStore.getState();
+            if (habits.length === 0) await useHabitStore.getState().fetchHabits();
+            refreshScheduleIfNeeded(useHabitStore.getState().habits);
+          }, 0);
 
           if ((inAuthGroup && !inUpdatePassword && !inVerifyResetOtp) || inOnboarding) router.replace('/(tabs)');
         } else {
