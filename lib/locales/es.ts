@@ -15,7 +15,7 @@ export default {
     },
     forgotPassword: {
       title: 'Restablecer contraseña',
-      subtitle: 'Ingresa tu correo y te enviaremos un código de 6 dígitos.',
+      subtitle: 'Ingresa tu correo y te enviaremos un código de 8 dígitos.',
       emailPlaceholder: 'Correo electrónico',
       button: 'Enviar enlace', loading: 'Enviando…',
       backToLogin: 'Volver al inicio de sesión',
@@ -38,12 +38,12 @@ export default {
     },
     verifyResetOtp: {
       title: 'Ingresar código',
-      subtitle: 'Ingresa el código de 6 dígitos enviado a tu correo.',
-      codePlaceholder: '000000',
+      subtitle: 'Ingresa el código de 8 dígitos enviado a tu correo.',
+      codePlaceholder: '00000000',
       button: 'Verificar', loading: 'Verificando…',
       back: 'Volver',
       errorTitle: 'Error',
-      errorLength: 'Ingresa el código completo de 6 dígitos.',
+      errorLength: 'Ingresa el código completo de 8 dígitos.',
       errorInvalid: 'Código inválido o expirado. Solicita uno nuevo.',
     },
     register: {

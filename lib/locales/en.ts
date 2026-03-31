@@ -15,7 +15,7 @@ export default {
     },
     forgotPassword: {
       title: 'Reset Password',
-      subtitle: "Enter your email and we'll send you a 6-digit code.",
+      subtitle: "Enter your email and we'll send you an 8-digit code.",
       emailPlaceholder: 'Email',
       button: 'Send Reset Link', loading: 'Sending…',
       backToLogin: 'Back to Sign In',
@@ -38,12 +38,12 @@ export default {
     },
     verifyResetOtp: {
       title: 'Enter Code',
-      subtitle: 'Enter the 6-digit code sent to your email.',
-      codePlaceholder: '000000',
+      subtitle: 'Enter the 8-digit code sent to your email.',
+      codePlaceholder: '00000000',
       button: 'Verify', loading: 'Verifying…',
       back: 'Go back',
       errorTitle: 'Error',
-      errorLength: 'Please enter the complete 6-digit code.',
+      errorLength: 'Please enter the complete 8-digit code.',
       errorInvalid: 'Invalid or expired code. Please request a new one.',
     },
     register: {

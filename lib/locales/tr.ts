@@ -15,7 +15,7 @@ export default {
     },
     forgotPassword: {
       title: 'Şifreni Sıfırla',
-      subtitle: 'E-posta adresini gir, 6 haneli doğrulama kodu gönderelim.',
+      subtitle: 'E-posta adresini gir, 8 haneli doğrulama kodu gönderelim.',
       emailPlaceholder: 'E-posta',
       button: 'Sıfırlama Bağlantısı Gönder', loading: 'Gönderiliyor…',
       backToLogin: 'Giriş ekranına dön',
@@ -38,12 +38,12 @@ export default {
     },
     verifyResetOtp: {
       title: 'Kodu Gir',
-      subtitle: 'E-postana gönderilen 6 haneli kodu gir.',
-      codePlaceholder: '000000',
+      subtitle: 'E-postana gönderilen 8 haneli kodu gir.',
+      codePlaceholder: '00000000',
       button: 'Doğrula', loading: 'Doğrulanıyor…',
       back: 'Geri dön',
       errorTitle: 'Hata',
-      errorLength: '6 haneli kodu eksiksiz gir.',
+      errorLength: '8 haneli kodu eksiksiz gir.',
       errorInvalid: 'Kod hatalı veya süresi dolmuş. Yeni kod talep et.',
     },
     register: {

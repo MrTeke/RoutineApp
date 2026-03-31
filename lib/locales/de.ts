@@ -15,7 +15,7 @@ export default {
     },
     forgotPassword: {
       title: 'Passwort zurücksetzen',
-      subtitle: 'Gib deine E-Mail ein und wir senden dir einen 6-stelligen Code.',
+      subtitle: 'Gib deine E-Mail ein und wir senden dir einen 8-stelligen Code.',
       emailPlaceholder: 'E-Mail',
       button: 'Reset-Link senden', loading: 'Wird gesendet…',
       backToLogin: 'Zurück zur Anmeldung',
@@ -38,12 +38,12 @@ export default {
     },
     verifyResetOtp: {
       title: 'Code eingeben',
-      subtitle: 'Gib den 6-stelligen Code ein, der an deine E-Mail gesendet wurde.',
-      codePlaceholder: '000000',
+      subtitle: 'Gib den 8-stelligen Code ein, der an deine E-Mail gesendet wurde.',
+      codePlaceholder: '00000000',
       button: 'Bestätigen', loading: 'Wird bestätigt…',
       back: 'Zurück',
       errorTitle: 'Fehler',
-      errorLength: 'Bitte gib den vollständigen 6-stelligen Code ein.',
+      errorLength: 'Bitte gib den vollständigen 8-stelligen Code ein.',
       errorInvalid: 'Ungültiger oder abgelaufener Code. Fordere einen neuen an.',
     },
     register: {

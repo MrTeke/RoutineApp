@@ -15,7 +15,7 @@ export default function VerifyResetOtpScreen() {
   const [focused, setFocused] = useState(false);
 
   const handleVerify = async () => {
-    if (code.length !== 6) {
+    if (code.length !== 8) {
       Alert.alert(t('auth.verifyResetOtp.errorTitle'), t('auth.verifyResetOtp.errorLength'));
       return;
     }
@@ -51,7 +51,7 @@ export default function VerifyResetOtpScreen() {
           value={code}
           onChangeText={setCode}
           keyboardType="number-pad"
-          maxLength={6}
+          maxLength={8}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
           returnKeyType="done"
