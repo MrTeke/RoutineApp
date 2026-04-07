@@ -96,6 +96,7 @@ export default {
     sections: { notifications: 'NOTIFICACIONES', language: 'IDIOMA', account: 'CUENTA' },
     notif: { title: 'Estado de Notificaciones Push', active: 'Activo — notificaciones habilitadas', inactive: 'Token no encontrado — habilita las notificaciones' },
     signOut: { button: 'Cerrar sesión', title: 'Cerrar sesión', message: '¿Estás seguro de que quieres cerrar sesión?', confirm: 'Cerrar sesión' },
+    deleteAccount: { button: 'Eliminar Cuenta', title: 'Eliminar Cuenta', message: 'Esto eliminará permanentemente tu cuenta y todos tus datos (hábitos, registros y estadísticas). Esta acción no se puede deshacer.', confirm: 'Eliminar Cuenta', stepTwoTitle: '¿Estás completamente seguro?', stepTwoMessage: 'Tu cuenta y todos los datos serán borrados para siempre. Esto no se puede revertir.', stepTwoConfirm: 'Sí, Eliminar Todo', errorTitle: 'Error al Eliminar', errorMessage: 'No se pudo eliminar tu cuenta. Inténtalo de nuevo.' },
     saveError: 'No se pudo guardar el nombre.',
   },
   habitForm: {

@@ -133,7 +133,9 @@
 - [x] `eas build --platform ios --profile preview` → Apple hesabıyla giriş yap, signing otomatik oluşsun (bundle: com.tekeshi.lumi)
 - [x] Push notification E2E testi ✅ (27 Mar 2026)
 - [x] Deep link race condition bug fix — `app/_layout.tsx` `pendingUrl` state ile düzeltildi
-- [ ] Şifre sıfırlama deep link testi (`lumi://reset-password`) — preview build kuyruğu bekliyor, Mac ile test edilecek (28 Mar 2026)
+- [x] Şifre sıfırlama deep link yaklaşımı tamamen kaldırıldı (10+ build'de hiç çalışmadı)
+- [x] Email OTP akışı implement edildi: `app/(auth)/verify-reset-otp.tsx` + Supabase `{{ .Token }}` email template (31 Mar 2026)
+- [x] Supabase auth deadlock bug fix — `onAuthStateChange` async callback'teki işlemler `setTimeout(0)` ile ertelendi
 
 #### App Store Submission Hazırlığı
 - [x] App Store Connect'te uygulama kaydı oluşturuldu — "Lumi: Daily Routine" (bundle: com.tekeshi.lumi, SKU: com.tekeshi.lumi)
@@ -148,7 +150,7 @@
 - [x] App Review Information (test hesabı + contact info) dolduruldu
 - [x] Regulated Medical Device Declaration → No
 - [x] `docs/index.html` destek sayfası oluşturuldu → https://mrteke.github.io/RoutineApp/
-- [ ] Şifre sıfırlama deep link testi — Nisan 1'de EAS build hakkı sıfırlanınca
+- [x] Şifre sıfırlama OTP testi — Expo Go'da doğrulandı ✅ (4 Nisan 2026)
 - [ ] `eas build --platform ios --profile production`
 - [ ] Build'i App Store Connect'e yükle (build seç)
 - [ ] `eas submit --platform ios` veya App Store Connect'ten "Add for Review"
@@ -198,7 +200,7 @@
 
 ## ⏭️ Sıradaki Adım
 
-1. [ ] Nisan 1'de EAS build hakkı sıfırlanınca: şifre sıfırlama deep link testi (production build ile)
-2. [ ] `eas build --platform ios --profile production`
-3. [ ] Build tamamlanınca App Store Connect → iOS App 1.0 → Build seç
-4. [ ] "Add for Review" → Submit
+1. [x] Şifre sıfırlama OTP akışı Expo Go'da doğrulandı ✅
+2. [x] `eas build --platform ios --profile production` ✅ (4 Nisan 2026)
+3. [x] Build tamamlanınca App Store Connect → iOS App 1.0 → Build seç ✅
+4. [x] "Add for Review" → Submit ✅ (4 Nisan 2026)

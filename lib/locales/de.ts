@@ -96,6 +96,7 @@ export default {
     sections: { notifications: 'BENACHRICHTIGUNGEN', language: 'SPRACHE', account: 'KONTO' },
     notif: { title: 'Push-Benachrichtigungsstatus', active: 'Aktiv — Benachrichtigungen aktiviert', inactive: 'Token fehlt — Benachrichtigungen aktivieren' },
     signOut: { button: 'Abmelden', title: 'Abmelden', message: 'Möchtest du dich wirklich abmelden?', confirm: 'Abmelden' },
+    deleteAccount: { button: 'Konto löschen', title: 'Konto löschen', message: 'Dadurch werden dein Konto und alle deine Daten (Gewohnheiten, Protokolle und Statistiken) dauerhaft gelöscht. Diese Aktion kann nicht rückgängig gemacht werden.', confirm: 'Konto löschen', stepTwoTitle: 'Bist du absolut sicher?', stepTwoMessage: 'Dein Konto und alle Daten werden dauerhaft gelöscht. Dies kann nicht rückgängig gemacht werden.', stepTwoConfirm: 'Ja, Alles löschen', errorTitle: 'Löschen fehlgeschlagen', errorMessage: 'Dein Konto konnte nicht gelöscht werden. Versuche es erneut.' },
     saveError: 'Name konnte nicht gespeichert werden.',
   },
   habitForm: {

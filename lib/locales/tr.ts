@@ -96,6 +96,7 @@ export default {
     sections: { notifications: 'BİLDİRİMLER', language: 'DİL', account: 'HESAP' },
     notif: { title: 'Push Bildirim Durumu', active: 'Aktif — bildirimler açık', inactive: 'Token alınamadı — bildirimlere izin ver' },
     signOut: { button: 'Çıkış Yap', title: 'Çıkış Yap', message: 'Hesabından çıkmak istiyor musun?', confirm: 'Çıkış Yap' },
+    deleteAccount: { button: 'Hesabı Sil', title: 'Hesabı Sil', message: 'Bu işlem hesabını ve tüm verilerini (alışkanlıklar, kayıtlar ve istatistikler) kalıcı olarak silecek. Bu işlem geri alınamaz.', confirm: 'Hesabı Sil', stepTwoTitle: 'Kesinlikle emin misin?', stepTwoMessage: 'Hesabın ve tüm verilerin kalıcı olarak silinecek. Bu geri alınamaz.', stepTwoConfirm: 'Evet, Her Şeyi Sil', errorTitle: 'Silme Başarısız', errorMessage: 'Hesabın silinemedi. Lütfen tekrar dene.' },
     saveError: 'İsim kaydedilemedi.',
   },
   habitForm: {

@@ -96,6 +96,7 @@ export default {
     sections: { notifications: 'NOTIFICATIONS', language: 'LANGUAGE', account: 'ACCOUNT' },
     notif: { title: 'Push Notification Status', active: 'Active — notifications enabled', inactive: 'Token missing — enable notifications' },
     signOut: { button: 'Sign Out', title: 'Sign Out', message: 'Are you sure you want to sign out?', confirm: 'Sign Out' },
+    deleteAccount: { button: 'Delete Account', title: 'Delete Account', message: 'This will permanently delete your account and all your data (habits, logs, and statistics). This action cannot be undone.', confirm: 'Delete Account', stepTwoTitle: 'Are you absolutely sure?', stepTwoMessage: 'Your account and all data will be permanently erased. This cannot be reversed.', stepTwoConfirm: 'Yes, Delete Everything', errorTitle: 'Deletion Failed', errorMessage: 'Could not delete your account. Please try again.' },
     saveError: 'Could not save name.',
   },
   habitForm: {

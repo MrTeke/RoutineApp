@@ -15,6 +15,7 @@ type HabitStore = {
   deleteHabit: (id: string) => Promise<void>;
   logHabit: (habitId: string, source?: HabitLog['source']) => Promise<void>;
   clearError: () => void;
+  deleteAccount: () => Promise<{ error: string | null }>;
 };
 
 export const useHabitStore = create<HabitStore>((set, get) => ({
@@ -142,6 +143,30 @@ export const useHabitStore = create<HabitStore>((set, get) => ({
       .eq('sent', false);
 
     set((state) => ({ habits: state.habits.filter((h) => h.id !== id) }));
+  },
+
+  deleteAccount: async () => {
+    const { data: sessionData } = await supabase.auth.getSession();
+    const jwt = sessionData.session?.access_token;
+    if (!jwt) return { error: 'No active session' };
+
+    const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL!;
+    try {
+      const response = await fetch(`${supabaseUrl}/functions/v1/delete-account`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${jwt}`,
+        },
+      });
+      const json = await response.json();
+      if (!response.ok || json.error) return { error: json.error ?? 'Deletion failed' };
+      set({ habits: [], todayLogs: [] });
+      await supabase.auth.signOut();
+      return { error: null };
+    } catch (err) {
+      return { error: String(err) };
+    }
   },
 
   logHabit: async (habitId, source = 'manual') => {

@@ -16,6 +16,7 @@ import Animated, { FadeInDown } from 'react-native-reanimated';
 import { useTranslation } from 'react-i18next';
 import { supabase } from '../../lib/supabase';
 import { Profile } from '../../lib/supabase';
+import { useHabitStore } from '../../lib/store';
 import { changeLanguage, SUPPORTED_LANGUAGES, getDateLocale } from '../../lib/i18n';
 
 function getInitials(name: string | null, email: string): string {
@@ -33,11 +34,13 @@ function getInitials(name: string | null, email: string): string {
 
 export default function ProfileScreen() {
   const { t, i18n } = useTranslation();
+  const deleteAccount = useHabitStore((s) => s.deleteAccount);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [fullName, setFullName] = useState('');
   const [editing, setEditing] = useState(false);
   const [saving, setSaving] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [deletingAccount, setDeletingAccount] = useState(false);
   const [habitCount, setHabitCount] = useState(0);
   const [logCount, setLogCount] = useState(0);
 
@@ -90,6 +93,41 @@ export default function ProfileScreen() {
         onPress: () => supabase.auth.signOut(),
       },
     ]);
+  };
+
+  const handleDeleteAccount = () => {
+    Alert.alert(
+      t('profile.deleteAccount.title'),
+      t('profile.deleteAccount.message'),
+      [
+        { text: t('common.cancel'), style: 'cancel' },
+        {
+          text: t('profile.deleteAccount.confirm'),
+          style: 'destructive',
+          onPress: () => {
+            Alert.alert(
+              t('profile.deleteAccount.stepTwoTitle'),
+              t('profile.deleteAccount.stepTwoMessage'),
+              [
+                { text: t('common.cancel'), style: 'cancel' },
+                {
+                  text: t('profile.deleteAccount.stepTwoConfirm'),
+                  style: 'destructive',
+                  onPress: async () => {
+                    setDeletingAccount(true);
+                    const { error } = await deleteAccount();
+                    setDeletingAccount(false);
+                    if (error) {
+                      Alert.alert(t('profile.deleteAccount.errorTitle'), t('profile.deleteAccount.errorMessage'));
+                    }
+                  },
+                },
+              ]
+            );
+          },
+        },
+      ]
+    );
   };
 
   if (loading) {
@@ -216,6 +254,12 @@ export default function ProfileScreen() {
             <TouchableOpacity style={styles.cardRow} onPress={handleSignOut}>
               <Text style={styles.cardIcon}>🚪</Text>
               <Text style={[styles.cardTitle, { color: '#D63031' }]}>{t('profile.signOut.button')}</Text>
+            </TouchableOpacity>
+            <View style={styles.divider} />
+            <TouchableOpacity style={styles.cardRow} onPress={handleDeleteAccount} disabled={deletingAccount}>
+              <Text style={styles.cardIcon}>🗑️</Text>
+              <Text style={[styles.cardTitle, { color: '#D63031', flex: 1 }]}>{t('profile.deleteAccount.button')}</Text>
+              {deletingAccount && <ActivityIndicator size="small" color="#D63031" />}
             </TouchableOpacity>
           </View>
         </Animated.View>
