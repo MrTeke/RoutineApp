@@ -124,7 +124,7 @@
 - [x] `eas.json` oluşturuldu (development / preview / production profilleri)
 - [x] GitHub repo oluşturuldu: https://github.com/MrTeke/RoutineApp (public)
 - [x] Privacy Policy yayınlandı: https://mrteke.github.io/RoutineApp/privacy-policy.html
-- [x] Apple Developer Program — ödeme yapıldı (sipariş: W1636192771), onay bekleniyor
+- [x] Apple Developer Program — ödeme yapıldı, onay bekleniyor
 
 ### Yapılacaklar
 
