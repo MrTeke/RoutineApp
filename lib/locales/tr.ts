@@ -122,4 +122,14 @@ export default {
   timePicker: { title: 'Saat Seç', hour: 'Saat', minute: 'Dakika', cancel: 'İptal', confirm: 'Tamam' },
   shareCard: { streak: '{{count}} günlük seri 🔥', total: '{{count}} gün tamamlandı' },
   layout: { newHabit: 'Yeni Alışkanlık', editHabit: 'Alışkanlığı Düzenle' },
+  whatsNew: {
+    title: "Lumi 1.1.0'dasın ✨",
+    subtitle: "İlk kullanıcılarımızdan biri olduğun için teşekkürler. Deneyimin bizim için çok değerli.",
+    question: "Lumi'yi bir arkadaşına tavsiye etmeni sağlayacak şey ne olurdu?",
+    placeholder: "Bir özellik, düzeltme ya da his — her kelimeyi okuyoruz 💜",
+    send: "Geri Bildirim Gönder",
+    skip: "Belki daha sonra",
+    thankYou: "Teşekkürler! 🙏",
+    thankYouSub: "Geri bildirimin Lumi'nin bir sonraki bölümünü şekillendiriyor.",
+  },
 };

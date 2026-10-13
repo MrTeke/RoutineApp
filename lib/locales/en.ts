@@ -122,4 +122,14 @@ export default {
   timePicker: { title: 'Select Time', hour: 'Hour', minute: 'Minute', cancel: 'Cancel', confirm: 'OK' },
   shareCard: { streak: '{{count}}-day streak 🔥', total: '{{count}} days completed' },
   layout: { newHabit: 'New Habit', editHabit: 'Edit Habit' },
+  whatsNew: {
+    title: "You're on Lumi 1.1.0 ✨",
+    subtitle: "Thank you for being one of our first users. Your experience matters deeply to us.",
+    question: "What would make you recommend Lumi to a friend?",
+    placeholder: "Any feature, fix, or feeling — we read every word 💜",
+    send: "Send Feedback",
+    skip: "Maybe later",
+    thankYou: "Thank you! 🙏",
+    thankYouSub: "Your feedback helps shape Lumi's next chapter.",
+  },
 };

@@ -66,3 +66,11 @@ export type NotificationSchedule = {
   sent: boolean;
   sent_at: string | null;
 };
+
+export type Feedback = {
+  id: string;
+  user_id: string;
+  message: string;
+  app_version: string;
+  created_at: string;
+};

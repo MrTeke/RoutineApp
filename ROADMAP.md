@@ -198,9 +198,32 @@
 
 ---
 
+## Faz 6: v1.1.0 — Geri Bildirim Modalı & Ücretli Model  🔄 Devam Ediyor
+
+### Versiyon Güncelleme
+- [x] `app.json` + `package.json` → `1.1.0`
+
+### Feedback Altyapısı
+- [x] `supabase/migrations/20240101000008_create_feedback.sql` — `feedback` tablosu + RLS (Supabase'de çalıştırıldı)
+- [x] `lib/supabase.ts` — `Feedback` tipi eklendi
+
+### "What's New" Modalı
+- [x] `components/WhatsNewModal.tsx` — Mor gradient header, geri bildirim formu, teşekkür ekranı
+- [x] `app/_layout.tsx` — AsyncStorage `last_seen_version` kontrolü, versiyon güncellemesinde modal otomatik açılıyor
+- [x] `lib/locales/en.ts` / `tr.ts` / `es.ts` / `de.ts` — `whatsNew` i18n anahtarları eklendi (4 dil)
+
+### Yapılacaklar
+- [x] Cihaz testi (giriş yap → modal çıkmalı, gönder → Supabase'de kayıt görünmeli) ✅ (13 Ekim 2026) — Expo Go SDK 57'ye geçtiği için (proje SDK 54) `eas build --platform ios --profile preview` build'i ile yapıldı
+- [ ] `eas build --platform ios --profile production`
+- [ ] App Store Connect → fiyatlandırmayı ücretli yap (Pricing & Availability)
+- [ ] Build'i App Store Connect'e yükle → "Add for Review"
+
+---
+
 ## ⏭️ Sıradaki Adım
 
 1. [x] Şifre sıfırlama OTP akışı Expo Go'da doğrulandı ✅
 2. [x] `eas build --platform ios --profile production` ✅ (4 Nisan 2026)
 3. [x] Build tamamlanınca App Store Connect → iOS App 1.0 → Build seç ✅
 4. [x] "Add for Review" → Submit ✅ (4 Nisan 2026)
+5. [ ] v1.1.0 test → build → App Store submit
